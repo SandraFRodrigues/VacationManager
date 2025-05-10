@@ -11,10 +11,9 @@ namespace VacationApp
     {
         static void Main()
         {
-
-            var vacationService = new VacationService();  // Serviço de férias
-            var loginService = new LoginService();  // Serviço de autenticação
-            var operationLog = new List<string>();  // Histórico de operações
+            var loginService = new LoginService();
+            var vacationService = new VacationService(loginService); 
+            var operationLog = new List<string>();
 
             while (true)
             {
@@ -22,30 +21,41 @@ namespace VacationApp
                 while (user == null)
                 {
                     Console.Clear();
-                    Utility.WriteTitle("Vacation manager");
-
-                    // Realiza o login com o LoginService
+                    Utility.WriteTitle("Vacation Manager");
                     Utility.WriteMessage("Username: ");
                     string username = Console.ReadLine();
-                    Utility.WriteMessage("Password: ");
-                    string password = Console.ReadLine();
+                    string password = Utility.ReadPassword("Password: ");
 
-                    // Usa o LoginService para autenticar
-                    user = LoginView.ShowLogin(loginService, username, password);
-
-                    if (user == null)
+                    try
                     {
-                        Utility.WriteErrorMessage("Invalid credentials. Try again or press 'c' to cancel.");
-                        if (Console.ReadKey().KeyChar == 'c') return;
+                        user = LoginView.ShowLogin(loginService, username, password);
+
+                        if (user == null)
+                        {
+                            Utility.WriteErrorMessage("Invalid credentials. Try again or press 'c' to cancel.");
+                            if (Console.ReadKey().KeyChar == 'c') return;
+                        }
+                        else
+                        {
+                            Utility.ShowGreeting();
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        Utility.ShowGreeting();
+                        Utility.WriteErrorMessage("An error occurred during login.");
+                        if (Console.ReadKey().KeyChar == 'c') return;
                     }
                 }
 
-                // Exibe o menu após o login bem-sucedido, passando o operationLog também
-                MainMenu.Show(user, vacationService, operationLog);
+                try
+                {
+                    MainMenu.Show(user, vacationService, operationLog);
+                }
+                catch (Exception)
+                {
+                    Utility.WriteErrorMessage("An error occurred in the main menu.");
+                    if (Console.ReadKey().KeyChar == 'c') return;
+                }
             }
         }
     }

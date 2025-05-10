@@ -1,20 +1,21 @@
 ﻿using System;
+using D00_Utility;
+using VacationCore.Entities;
 
 namespace VacationCore.Entities
 {
     public class VacationPeriod
     {
-        private static int _nextId = 1; // contador interno de IDs
-
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public VacationPeriod(DateTime startDate, DateTime endDate)
+        public VacationPeriod() { }
+
+        public VacationPeriod(DateTime start, DateTime end)
         {
-            Id = _nextId++; // atribui ID automaticamente
-            StartDate = startDate;
-            EndDate = endDate;
+            StartDate = start;
+            EndDate = end;
         }
     }
 }

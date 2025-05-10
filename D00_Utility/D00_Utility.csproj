@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FA66BE2E-261F-4717-804D-23ED00B6EA4D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>VacationApp</RootNamespace>
-    <AssemblyName>VacationApp</AssemblyName>
+    <ProjectGuid>{1958E358-634A-4460-B0D3-3D7884EE4BB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>D00_Utility</RootNamespace>
+    <AssemblyName>D00_Utility</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,27 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\MainMenu.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\LoginView.cs" />
-    <Compile Include="Views\VacationInputView.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\D00_Utility\D00_Utility.csproj">
-      <Project>{1958e358-634a-4460-b0d3-3d7884ee4bb4}</Project>
-      <Name>D00_Utility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VacationCore\VacationCore.csproj">
-      <Project>{07e3d317-9071-47ba-b069-c0a683e9da57}</Project>
-      <Name>VacationCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

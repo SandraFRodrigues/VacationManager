@@ -44,7 +44,6 @@
     <Compile Include="Entities\AdminUser.cs" />
     <Compile Include="Entities\EmployeeUser.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\Vacation.cs" />
     <Compile Include="Entities\VacationPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LoginService.cs" />
