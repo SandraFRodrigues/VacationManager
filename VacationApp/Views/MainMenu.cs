@@ -51,13 +51,13 @@ namespace VacationApp
                         if (user.IsAdmin)
                             RegisterEmployeeVacation(vacationService, operationLog);
                         else
-                            Utility.WriteErrorMessage("Invalid option.");
+                            Utility.WriteErrorMessage("\nInvalid option.");
                         break;
                     case "5":
                         if (user.IsAdmin)
                             UpdateEmployeeVacation(vacationService, operationLog);
                         else
-                            Utility.WriteErrorMessage("Invalid option.");
+                            Utility.WriteErrorMessage("\nInvalid option.");
                         break;
                     case "9":
                         return;
@@ -65,7 +65,7 @@ namespace VacationApp
                         exit = true;
                         break;
                     default:
-                        Utility.WriteErrorMessage("Invalid option.");
+                        Utility.WriteErrorMessage("\nInvalid option.");
                         break;
                 }
             }
@@ -123,13 +123,13 @@ namespace VacationApp
             var vacations = vacationService.GetVacations(user.Username);
             if (vacations == null || vacations.Count == 0)
             {
-                Utility.WriteErrorMessage("No vacations registered.");
+                Utility.WriteErrorMessage("\nNo vacations registered.");
             }
             else
             {
                 foreach (var v in vacations)
                 {
-                    Utility.WriteMessage($"ID: {v.Id} - {v.StartDate:yyyy-MM-dd} to {v.EndDate:yyyy-MM-dd}");
+                    Utility.WriteMessage($"ID: {v.Id} - {v.StartDate:yyyy-MM-dd} to {v.EndDate:yyyy-MM-dd}\n");
                 }
             }
 
@@ -146,7 +146,7 @@ namespace VacationApp
             var vacations = vacationService.GetVacations(user.Username);
             if (vacations == null || vacations.Count == 0)
             {
-                Utility.WriteErrorMessage("No vacations registered.");
+                Utility.WriteErrorMessage("\nNo vacations registered.");
                 return;
             }
 
@@ -167,12 +167,12 @@ namespace VacationApp
             var vacation = vacationService.GetVacationById(vacationId, user.Username);
             if (vacation == null)
             {
-                Utility.WriteErrorMessage("No vacation found with that ID.");
+                Utility.WriteErrorMessage("\nNo vacation found with that ID.");
                 return;
             }
 
-            Utility.WriteMessage($"\nVacation found: {vacation.StartDate:yyyy-MM-dd} to {vacation.EndDate:yyyy-MM-dd}");
-            Utility.WriteMessage("Enter new vacation dates:");
+            Utility.WriteMessage($"\nVacation found: {vacation.StartDate:yyyy-MM-dd} to {vacation.EndDate:yyyy-MM-dd}\n");
+            Utility.WriteMessage("\nEnter new vacation dates:");
 
             var newPeriod = GetVacationPeriodFromUser();
 
@@ -181,18 +181,18 @@ namespace VacationApp
                 
                 if (vacationService.IsOverlapping(user.Username, newPeriod.StartDate, newPeriod.EndDate))
                 {
-                    Utility.WriteErrorMessage("New vacation period overlaps with an existing one.");
+                    Utility.WriteErrorMessage("\nNew vacation period overlaps with an existing one.");
                     return;
                 }
                 
                 if (vacationService.IsOverlapping(user.Username, newPeriod.StartDate, newPeriod.EndDate))
                 {
-                    Utility.WriteErrorMessage("New vacation period overlaps with an existing one.");
+                    Utility.WriteErrorMessage("\nNew vacation period overlaps with an existing one.");
                     return;
                 }
                 if (vacationService.IsOverlapping(user.Username, newPeriod.StartDate, newPeriod.EndDate, vacationId))
                 {
-                    Utility.WriteErrorMessage("New vacation period overlaps with an existing one.");
+                    Utility.WriteErrorMessage("\nNew vacation period overlaps with an existing one.");
                     return;
                 }
 

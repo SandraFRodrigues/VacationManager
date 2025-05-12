@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationApp", "VacationApp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationCore", "VacationCore\VacationCore.csproj", "{07E3D317-9071-47BA-B069-C0A683E9DA57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D00_Utility", "..\D00_Utility\D00_Utility.csproj", "{1958E358-634A-4460-B0D3-3D7884EE4BB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D00_Utility", "D00_Utility\D00_Utility.csproj", "{1958E358-634A-4460-B0D3-3D7884EE4BB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

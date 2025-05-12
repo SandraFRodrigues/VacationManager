@@ -25,7 +25,7 @@ namespace D00_Utility
             Console.WriteLine($"{new string('-', 20)}{endTitle}");
 
             Console.ForegroundColor = ConsoleColor.White;
-                        
+
         }
         #endregion
 
@@ -87,10 +87,10 @@ namespace D00_Utility
             // Reset the console color to the original color
             Console.ForegroundColor = currentColor;
         }
-            #endregion
+        #endregion
 
         #region Method to CenterText
-            public static void CenterText(string message)
+        public static void CenterText(string message)
         {
             int windowWidth = Console.WindowWidth;
             int startPos = (windowWidth / 2) - (message.Length / 2);
@@ -123,7 +123,39 @@ namespace D00_Utility
             Console.WriteLine($"Today's Date: {currentTime:dddd, MMMM dd, yyyy}");
         }
         #endregion
+
+        #region MethodtoReadPassword
+        public static string ReadPassword(string prompt)
+        {
+            Console.Write(prompt);
+            string password = string.Empty;
+
+            while (true)
+            {
+                var key = Console.ReadKey(intercept: true); // Não mostra o que é digitado
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                {
+                    password = password.Substring(0, password.Length - 1);
+                    Console.Write("\b \b");
+                }
+                else
+                {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+            }
+            Console.WriteLine();
+            return password;
+        }
+        #endregion
     }
 }
+
+
 
 
